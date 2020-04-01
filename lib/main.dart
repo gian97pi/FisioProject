@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       locale: DevicePreview.of(context).locale,
       builder: DevicePreview.appBuilder,
-      title: 'Flutter Demo',
+      title: 'Fisio',
       theme: AppThemes.fisio,
       home: BottomMenu(),
     );

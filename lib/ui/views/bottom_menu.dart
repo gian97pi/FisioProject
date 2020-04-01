@@ -1,10 +1,11 @@
+import 'package:fisioproject/classes/double_buttons_model.dart';
 import 'package:fisioproject/ui/views/info_esercizio.dart';
+import 'package:fisioproject/ui/views/scheda.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:fisioproject/presentation/custom_icons.dart';
 import 'package:fisioproject/ui/views/altro.dart';
-import 'package:fisioproject/ui/experimentals/prova.dart';
 import 'package:fisioproject/ui/views/riepilogo.dart';
 import 'package:fisioproject/classes/user.dart';
 
@@ -20,7 +21,10 @@ class _BottomMenuState extends State<BottomMenu> {
   //Link alle varie sezioni
   final tabs = [
     Riepilogo(),
-    Center(child: Text("Scheda")),
+    ChangeNotifierProvider<ButtonsModel>.value(
+    value: ButtonsModel(),
+    child: Schede(),
+    ),
     InfoEsercizio(),
     Altro(),
 
