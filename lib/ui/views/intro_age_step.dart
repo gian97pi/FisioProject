@@ -1,8 +1,10 @@
-import 'package:fisioproject/ui/views/intro_age_step.dart';
+import 'package:fisioproject/ui/views/bottom_menu.dart';
+import 'package:fisioproject/ui/views/intro_name_step.dart';
+import 'package:fisioproject/ui/views/intro_profile_complete.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/values/colors.dart';
 
-class ProfileName extends StatelessWidget {
+class ProfileAge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -95,7 +97,7 @@ class ProfileName extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
                       child: Text(
-                        "Ciao, come ti \nchiami?",
+                        "Quanti anni hai?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: "Rubik",
@@ -111,7 +113,7 @@ class ProfileName extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.only(left: 24.0, top: 12.0, right: 24.0),
+              const EdgeInsets.only(left: 24.0, top: 12.0, right: 24.0),
               child: Container(
                 decoration: BoxDecoration(
                     boxShadow: [
@@ -127,8 +129,8 @@ class ProfileName extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(24, 24, 24, 0),
                   child: TextField(
-                      //Nome
-                      //controller: _nameController,
+                    //Nome
+                    //controller: _nameController,
                       textAlign: TextAlign.right,
                       cursorWidth: 2.0,
                       cursorColor: AppColors.primaryText,
@@ -167,7 +169,7 @@ class ProfileName extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ProfileAge()));
+                              builder: (context) => CompleteProfile()));
                     },
                     child: Text(
                       "Continua",

@@ -1,4 +1,6 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:fisioproject/ui/views/altro.dart';
+import 'package:fisioproject/ui/views/intro_name_step.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/ui/views/bottom_menu.dart';
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       title: 'Fisio',
       theme: AppThemes.fisio,
-      home: BottomMenu(),
+      home: ProfileName(),
     );
   }
 }
