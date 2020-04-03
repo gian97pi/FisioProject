@@ -1,11 +1,13 @@
 import 'dart:io' show Platform;
 
+import 'package:fisioproject/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/classes/user.dart';
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 class Altro extends StatefulWidget {
   @override
@@ -35,40 +37,26 @@ class _AltroState extends State<Altro> {
   @override
   void initState() {
     super.initState();
-    _getData().then((user){
-      setState(() {
-        _nameController.text = user.name;
-        _ageController.text = user.age;
-        _timeToDisplay = user.notificationTime;
-        _enableNotifications = user.notifications;
-      });
+    User user = _getData();
+    setState(() {
+      _nameController.text = user.name;
+      _ageController.text = user.age;
+      _timeToDisplay = user.notificationTime;
+      _enableNotifications = user.notifications;
     });
   }
 
-  Future<User> _getData() async {
-    final userPrefs = await SharedPreferences.getInstance();
-    return User.get(userPrefs);
+  User _getData()  {
+    return User.get(MyApp.sharedPreferences);
   }
 
-  Future<void> _setData(String key, String value) async {
-    final userPrefs = await SharedPreferences.getInstance();
-    await userPrefs.setString(key, value);
+  void _setData(String key, String value) {
+    MyApp.sharedPreferences.setString(key, value);
   }
 
-  Future<void> _setBool(String key, bool value) async {
-    final userPrefs = await SharedPreferences.getInstance();
-    await userPrefs.setBool(key, value);
+  void _setBool(String key, bool value)  {
+    MyApp.sharedPreferences.setBool(key, value);
   }
-
-  /*Future<UserBloc> _getNameFromSharedPrefs() async {
-    UserBloc user = UserBloc();
-    final userPrefs = await SharedPreferences.getInstance();
-    user.name = userPrefs.getString('name') ?? '';
-    user.age = userPrefs.getString('age') ?? '';
-    user.notificationTime = userPrefs.getString('notificationTime') ?? '';
-
-    return user;
-  }*/
 
   Widget customSwitch() {
     if (Platform.isIOS) {
