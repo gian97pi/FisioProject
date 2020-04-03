@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/classes/user.dart';
@@ -68,6 +70,32 @@ class _AltroState extends State<Altro> {
     return user;
   }*/
 
+  Widget customSwitch() {
+    if (Platform.isIOS) {
+      return CupertinoSwitch(
+          value: _enableNotifications,
+          onChanged: (status) {
+            setState(() {
+              _enableNotifications = status;
+              _setBool('notifications', status);
+            });
+          }
+      );
+    } else {
+      return Switch(
+        activeColor: AppColors.primaryText,
+        value: _enableNotifications,
+        onChanged: (status) {
+          setState(() {
+            _enableNotifications = status;
+            _setBool('notifications', status);
+          });
+        },
+      );
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -120,7 +148,9 @@ class _AltroState extends State<Altro> {
                         color: Colors.white
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: Platform.isIOS ?
+                      const EdgeInsets.only(left: 20.0, right: 10.0) :
+                      const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -131,17 +161,7 @@ class _AltroState extends State<Altro> {
                                   fontWeight: FontWeight.normal
                               )
                           ),
-                          Switch(
-                              activeColor: AppColors.primaryText,
-                              value: _enableNotifications,
-                              onChanged: (status) {
-                                setState(() {
-                                  _enableNotifications = status;
-                                  _setBool('notifications', status);
-                                });
-                              }
-                              ,
-                          )
+                          customSwitch()
                         ],
                       ),
                     )

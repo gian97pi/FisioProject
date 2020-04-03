@@ -1,5 +1,4 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/ui/views/bottom_menu.dart';
 import 'package:fisioproject/values/themes.dart';
