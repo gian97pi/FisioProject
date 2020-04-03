@@ -8,7 +8,7 @@ import 'package:fisioproject/values/themes.dart';
 
 void main() => runApp(
     DevicePreview(
-      enabled: !kReleaseMode,
+      enabled: false,
       builder: (context) => MyApp(),
     )
 );
@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       locale: DevicePreview.of(context).locale,
       builder: DevicePreview.appBuilder,
       title: 'Fisio',

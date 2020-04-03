@@ -5,17 +5,20 @@ class User /*extends ChangeNotifier*/ {
   String _name;
   String _age;
   String _notificationTime;
+  bool _notifications;
 
   User() {
     this.name = name;
     this.age = age;
     this.notificationTime = notificationTime;
+    this._notifications = _notifications;
   }
 
   User.get(SharedPreferences sharedPreferences) {
     this.name = sharedPreferences.getString('name') ?? '';
     this.age = sharedPreferences.getString('age') ?? '';
     this.notificationTime = sharedPreferences.getString('notificationTime') ?? '';
+    this.notifications = sharedPreferences.getBool('notifications') ?? false;
   }
 
   String get name => _name;
@@ -39,6 +42,10 @@ class User /*extends ChangeNotifier*/ {
     //notifyListeners();
   }
 
+  bool get notifications => _notifications;
 
+  set notifications(bool value) {
+    _notifications = value;
+  }
 
 }
