@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:fisioproject/classes/user.dart';
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class Altro extends StatefulWidget {
   @override
@@ -15,20 +14,36 @@ class Altro extends StatefulWidget {
 }
 
 class _AltroState extends State<Altro> {
-  TimeOfDay _current = TimeOfDay.now();
-  TimeOfDay _selected;
-  String _timeToDisplay = '';
-
   bool _enableNotifications = false;
 
   final _nameController = TextEditingController();
   final _ageController = TextEditingController();
 
+  DateTime _current = DateTime.now();
+  DateTime _selected;
+  String _timeToDisplay = '';
+
   //TimePicker
+  //Nota: i minuti mi ritornano con una cifra, se minori di 10, quindi la aggiungo a mano per creare una data leggibile
   Future<void> _selectedTime(BuildContext context) async {
-    _selected = await showTimePicker(context: context, initialTime: _selected ?? _current);
+    _selected = await DatePicker.showTimePicker(
+        context,
+        showSecondsColumn: false,
+        currentTime: _current,
+        onConfirm: (date) {
+          String hour = date.hour.toString();
+          String minute;
+          if(date.minute < 10)
+            minute = '0' + date.minute.toString();
+          else
+            minute = date.minute.toString();
+          _setData('notificationTime', '$hour:$minute');
+        });
     setState(() {
-      _timeToDisplay = _selected.format(context);
+      if(_selected.minute < 10)
+        _timeToDisplay = _selected.hour.toString() + ':0' + _selected.minute.toString();
+      else
+      _timeToDisplay = _selected.hour.toString() + ':' + _selected.minute.toString();
     });
     _setData('notificationTime', _timeToDisplay);
   }
@@ -81,7 +96,6 @@ class _AltroState extends State<Altro> {
         },
       );
     }
-
   }
 
   @override
@@ -179,7 +193,7 @@ class _AltroState extends State<Altro> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text('Ricordamelo alle',
+                            Text('Ricordami di fare gli esercizi alle',
                                 style: TextStyle(
                                     color: AppColors.primaryText,
                                     fontSize: 15,

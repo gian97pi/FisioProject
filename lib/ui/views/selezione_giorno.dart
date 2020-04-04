@@ -17,7 +17,7 @@ class SelezioneGiorno extends StatelessWidget {
                 children: <Widget>[
                   Align(
                     alignment: Alignment.topLeft,
-                    child: InkWell(
+                    child: GestureDetector(
                       child: Text(
                         "INDIETRO",
                         textAlign: TextAlign.left,

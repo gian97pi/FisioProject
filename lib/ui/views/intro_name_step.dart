@@ -36,14 +36,17 @@ class ProfileName extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                          child: Container(
-                            height: 15,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage('assets/images/container_bg.png'),
-                                fit: BoxFit.fill,
+                          child: Opacity(
+                            opacity: 0.3,
+                            child: Container(
+                              height: 15,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('assets/images/container_bg.png'),
+                                  fit: BoxFit.fill,
+                                ),
+                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
                             ),
                           ),
                         ),
@@ -51,14 +54,17 @@ class ProfileName extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                          child: Container(
-                            height: 15,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage('assets/images/container_bg.png'),
-                                fit: BoxFit.fill,
+                          child: Opacity(
+                            opacity: 0.3,
+                            child: Container(
+                              height: 15,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('assets/images/container_bg.png'),
+                                  fit: BoxFit.fill,
+                                ),
+                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
                             ),
                           ),
                         ),
