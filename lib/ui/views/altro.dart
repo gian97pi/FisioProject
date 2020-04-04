@@ -86,7 +86,6 @@ class _AltroState extends State<Altro> {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -136,9 +135,9 @@ class _AltroState extends State<Altro> {
                         color: Colors.white
                     ),
                     child: Padding(
-                      padding: Platform.isIOS ?
-                      const EdgeInsets.only(left: 20.0, right: 10.0) :
-                      const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: //Platform.isIOS ?
+                      const EdgeInsets.only(left: 20.0, right: 10.0), //:
+                      //const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[

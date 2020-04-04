@@ -32,7 +32,7 @@ class CompleteProfile extends StatelessWidget {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                       child: Container(
                         height: 15,
                         decoration: BoxDecoration(
@@ -68,15 +68,6 @@ class CompleteProfile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(24.0, 32.0, 29.0, 0),
-                    child: Container(
-                      height: 89,
-                      child: Image(
-                        image: AssetImage("assets/images/spine.png"),
-                      ),
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                     child: Text(
