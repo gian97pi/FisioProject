@@ -10,6 +10,7 @@ import 'classes/user.dart';
 
 void main() => runApp(
     DevicePreview(
+      //!kReleaseMode
       enabled: false,
       builder: (context) => MyApp(),
     )
