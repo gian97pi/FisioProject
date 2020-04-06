@@ -1,15 +1,28 @@
 import 'package:fisioproject/presentation/custom_icons.dart';
+
+import 'package:fisioproject/ui/elements/catalog_listview.dart';
+
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/ui/views/scheda.dart';
 
 class SelezioneGiorno extends StatelessWidget {
+  final List<String> giorni = [
+    'Lunedì',
+    'Martedì',
+    'Mercoledì',
+    'Giovedì',
+    'Venerdì',
+    'Sabato',
+    'Domenica'
+  ];
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: SafeArea(
-        child: Column(
+        resizeToAvoidBottomPadding: false,
+        body: SafeArea(
+          child: Column(
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
@@ -19,23 +32,22 @@ class SelezioneGiorno extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: GestureDetector(
-                      child: Text(
-                        "INDIETRO",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: AppColors.primaryText,
-                          fontFamily: "Rubik",
-                          fontWeight: FontWeight.w400,
-                          fontSize: 15,
+                        child: Text(
+                          "INDIETRO",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: AppColors.primaryText,
+                            fontFamily: "Rubik",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
-                      onTap: () {
-                        Navigator.pop(
-                          context,
-                          MaterialPageRoute(builder: (context) => Schede()),
-                        );
-                      }
-                    ),
+                        onTap: () {
+                          Navigator.pop(
+                            context,
+                            MaterialPageRoute(builder: (context) => Schede()),
+                          );
+                        }),
                   ),
                   Align(
                     alignment: Alignment.topRight,
@@ -54,7 +66,7 @@ class SelezioneGiorno extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0,20,0,0),
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
                 child: Container(
@@ -110,7 +122,7 @@ class SelezioneGiorno extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(16,20,16,0),
+              padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
               child: Container(
                   height: 44,
                   decoration: BoxDecoration(
@@ -119,27 +131,25 @@ class SelezioneGiorno extends StatelessWidget {
                           color: Color.fromRGBO(0, 0, 0, 220),
                           blurRadius: 5.0,
                           spreadRadius: 0.5,
-                          offset: Offset(0.0, 3.0), // shadow direction: bottom right
+                          offset: Offset(
+                              0.0, 3.0), // shadow direction: bottom right
                         )
                       ],
                       borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                      color: Colors.white
-                  ),
+                      color: Colors.white),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(16,0,0,0),
+                          padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
                           child: Text('Lunedi',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: AppColors.primaryText,
                                   fontSize: 15,
-                                  fontWeight: FontWeight.w500
-                              )
-                          ),
+                                  fontWeight: FontWeight.w500)),
                         ),
                         Icon(
                           Custom.next,
@@ -148,9 +158,12 @@ class SelezioneGiorno extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
-              ),
+                  )),
             ),
+            /*Padding(
+              padding: const EdgeInsets.fromLTRB(20.0,20.0,20.0,0),
+              child: CatalogListView(entries: giorni),
+            )*/
           ],
         ),
       ),
