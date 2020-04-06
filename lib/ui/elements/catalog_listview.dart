@@ -48,6 +48,7 @@ class ListState extends State<CatalogListView> {
                               fontSize: 15,
                             ),
                           ),
+
                         ),
                       ),
                       onTap: () {

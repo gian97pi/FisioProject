@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:fisioproject/ui/views/giorno_aggiunta.dart';
 import 'package:fisioproject/ui/views/intro_name_step.dart';
+import 'package:fisioproject/ui/views/selezione_giorno.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/ui/views/bottom_menu.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       title: 'Fisio',
       theme: AppThemes.fisio,
-      home: ProfileName(),
+      home: BottomMenu(),
     );
   }
 }
