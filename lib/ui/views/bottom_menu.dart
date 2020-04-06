@@ -64,7 +64,7 @@ class _BottomMenuState extends State<BottomMenu> {
             BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: Icon(CustomIcons.home),
+                  child: Icon(Custom.home),
                 ),
                 title: Text("Riepilogo")
             ),
@@ -72,7 +72,7 @@ class _BottomMenuState extends State<BottomMenu> {
             BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: Icon(CustomIcons.clipboard),
+                  child: Icon(Custom.clipboard),
                 ),
                 title: Text("Scheda")
             ),
@@ -80,7 +80,7 @@ class _BottomMenuState extends State<BottomMenu> {
             BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: Icon(CustomIcons.exercise),
+                  child: Icon(Custom.exercise),
                 ),
                 title: Text("Esercizi")
             ),
@@ -88,7 +88,7 @@ class _BottomMenuState extends State<BottomMenu> {
             BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: Icon(CustomIcons.others),
+                  child: Icon(Custom.other),
                 ),
                 title: Text("Altro")
             ),
