@@ -1,8 +1,13 @@
+import 'package:fisioproject/ui/elements/catalog_listview.dart';
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/ui/views/scheda.dart';
 
 class SelezioneGiorno extends StatelessWidget {
+
+  final List<String> giorni = [
+    'Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +61,7 @@ class SelezioneGiorno extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(0,40,0,0),
               child: Align(
                 alignment: Alignment.center,
-                  child: Text("Sembra tutto ok")
+                  child: CatalogListView(entries: giorni)
               ),
             ),
           ],
