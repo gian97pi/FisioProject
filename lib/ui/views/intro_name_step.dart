@@ -150,22 +150,29 @@ class ProfileName extends StatelessWidget {
                             cursorColor: AppColors.primaryText,
                             decoration: InputDecoration(
                               errorStyle: TextStyle(
-                                color: Colors.black,
-
-
+                                color: AppColors.primaryText,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w500
+                              ),
+                              focusedErrorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.transparent, width: 0),
+                              ),
+                              errorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.transparent, width: 0),
                               ),
                               enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.transparent),
+                                borderSide: BorderSide(color: Colors.transparent, width: 0),
                               ),
                               focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.transparent),
+                                borderSide: BorderSide(color: Colors.transparent, width: 0),
                               ),
                             ),
 
                             validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Please enter some text';
+                                  return 'c';
                                 }
+                                _setData('name', value);
                                 return null;
                             },
                             style: TextStyle(
