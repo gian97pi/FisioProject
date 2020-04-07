@@ -109,8 +109,8 @@ class IntroCompleteStep extends StatelessWidget {
                         boxShadow: [
                           BoxShadow(
                             color: Color.fromARGB(41, 0, 0, 0),
-                            offset: Offset(0, 3),
-                            blurRadius: 6,
+                            offset: Offset(0, 3.0),
+                            blurRadius: 6.0,
                           ),
                         ],
                         image: DecorationImage(
@@ -122,11 +122,15 @@ class IntroCompleteStep extends StatelessWidget {
                       child: ButtonTheme(
                         minWidth: double.infinity,
                         child: FlatButton(
+                          highlightColor: Colors.transparent,
+                          splashColor: Colors.transparent,
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => BottomMenu()));
+                                    builder: (context) => BottomMenu()
+                                )
+                            );
                           },
                           child: Text(
                             "Inizia",

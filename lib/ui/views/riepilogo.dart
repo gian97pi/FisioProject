@@ -1,11 +1,21 @@
+import 'package:fisioproject/classes/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fisioproject/values/colors.dart';
 
+import '../../main.dart';
+
 class Riepilogo extends StatelessWidget {
+
+  User _getData()  {
+    return User.get(Fisio.sharedPreferences);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final String user = _getData().name;
+
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -39,7 +49,7 @@ class Riepilogo extends StatelessWidget {
                         child: Row(
                           children: <Widget>[
                             Text(
-                                'Ciao,\nLeonardo',
+                                'Ciao,\n$user',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                     color: Colors.white,

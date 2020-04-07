@@ -62,15 +62,15 @@ class _AltroState extends State<Altro> {
   }
 
   User _getData()  {
-    return User.get(MyApp.sharedPreferences);
+    return User.get(Fisio.sharedPreferences);
   }
 
   void _setData(String key, String value) {
-    MyApp.sharedPreferences.setString(key, value);
+    Fisio.sharedPreferences.setString(key, value);
   }
 
   void _setBool(String key, bool value)  {
-    MyApp.sharedPreferences.setBool(key, value);
+    Fisio.sharedPreferences.setBool(key, value);
   }
 
   Widget customSwitch() {
@@ -193,7 +193,7 @@ class _AltroState extends State<Altro> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text('Ricordami di fare gli esercizi alle',
+                            Text('Ricordami di fare esercizio alle',
                                 style: TextStyle(
                                     color: AppColors.primaryText,
                                     fontSize: 15,
@@ -318,11 +318,10 @@ class _AltroState extends State<Altro> {
                                 cursorWidth: 2.0,
                                 cursorColor: AppColors.primaryText,
                                 decoration: null,
-                                maxLength: 3,
-                                maxLengthEnforced: true,
                                 keyboardType: TextInputType.number,
                                 inputFormatters: <TextInputFormatter>[
-                                  WhitelistingTextInputFormatter.digitsOnly
+                                  WhitelistingTextInputFormatter.digitsOnly,
+                                  LengthLimitingTextInputFormatter(3)
                                 ],
                                 onChanged: (String str) {
                                   _setData('age', str);

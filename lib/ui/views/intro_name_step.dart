@@ -1,13 +1,14 @@
 import 'package:fisioproject/ui/views/intro_age_step.dart';
-import 'package:fisioproject/values/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/values/colors.dart';
+import 'package:flutter/services.dart';
 
 import '../../main.dart';
 
 class IntroNameStep extends StatelessWidget {
   final _nameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool validInput = true;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +32,12 @@ class IntroNameStep extends StatelessWidget {
                             height: 15,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage('assets/images/container_bg.png'),
+                                image: AssetImage(
+                                    'assets/images/container_bg.png'),
                                 fit: BoxFit.fill,
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5.0)),
                             ),
                           ),
                         ),
@@ -48,10 +51,12 @@ class IntroNameStep extends StatelessWidget {
                               height: 15,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage('assets/images/container_bg.png'),
+                                  image: AssetImage(
+                                      'assets/images/container_bg.png'),
                                   fit: BoxFit.fill,
                                 ),
-                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5.0)),
                               ),
                             ),
                           ),
@@ -66,10 +71,12 @@ class IntroNameStep extends StatelessWidget {
                               height: 15,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage('assets/images/container_bg.png'),
+                                  image: AssetImage(
+                                      'assets/images/container_bg.png'),
                                   fit: BoxFit.fill,
                                 ),
-                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5.0)),
                               ),
                             ),
                           ),
@@ -79,7 +86,7 @@ class IntroNameStep extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(24.0),
+                  padding: const EdgeInsets.only(left: 24.0, top: 24.0, right: 24.0),
                   child: Container(
                     decoration: BoxDecoration(
                       boxShadow: [
@@ -99,18 +106,20 @@ class IntroNameStep extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(24.0, 32.0, 29.0, 0),
+                          padding:
+                              const EdgeInsets.fromLTRB(24.0, 32.0, 28.0, 0.0),
                           child: Container(
                             height: 89,
                             child: Image(
-                              image: AssetImage("assets/images/spine_white.png"),
+                              image:
+                                  AssetImage("assets/images/spine_white.png"),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
+                          padding: const EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 32.0),
                           child: Text(
-                            "Ciao, come ti \nchiami?",
+                            "Ciao, come ti\nchiami?",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: "Rubik",
@@ -126,72 +135,55 @@ class IntroNameStep extends StatelessWidget {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.only(left: 24.0, top: 12.0, right: 24.0),
-                  child: Form(
-                    key: _formKey,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromRGBO(0, 0, 0, 220),
-                              blurRadius: 5.0,
-                              spreadRadius: 0.5,
-                              offset: Offset(0.0, 3.0), // shadow direction: bottom
-                            )
-                          ],
-                          borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                          color: Colors.white),
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
-                        child: TextFormField(                                   //Nome
+                      const EdgeInsets.only(left: 24.0, top: 48.0, right: 24.0),
+                  child: Container(
+                    height: 44,
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromRGBO(0, 0, 0, 220),
+                            blurRadius: 5.0,
+                            spreadRadius: 0.5,
+                            offset:
+                                Offset(0.0, 3.0), // shadow direction: bottom
+                          )
+                        ],
+                        borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                        color: Colors.white
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        TextField(                                     //Nome
                             controller: _nameController,
                             textAlign: TextAlign.center,
                             cursorWidth: 2.0,
                             cursorColor: AppColors.primaryText,
-                            decoration: InputDecoration(
-                              errorStyle: TextStyle(
-                                color: AppColors.primaryText,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500
-                              ),
-                              focusedErrorBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.transparent, width: 0),
-                              ),
-                              errorBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.transparent, width: 0),
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.transparent, width: 0),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.transparent, width: 0),
-                              ),
-                            ),
-
-                            validator: (value) {
-                                if (value.isEmpty) {
-                                  return 'c';
-                                }
-                                _setData('name', value);
-                                return null;
-                            },
+                            decoration: null,
+                            textAlignVertical: TextAlignVertical.center,
+                            inputFormatters: <TextInputFormatter>[
+                              LengthLimitingTextInputFormatter(16)
+                            ],
                             style: TextStyle(
                                 color: AppColors.primaryText,
                                 fontSize: 20,
-                                fontWeight: FontWeight.w500)),
-                      ),
+                                fontWeight: FontWeight.w500
+                            )
+                        ),
+                      ],
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                  padding: const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
                   child: Container(
+                    height: 44,
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
                           color: Color.fromARGB(41, 0, 0, 0),
-                          offset: Offset(0, 3),
-                          blurRadius: 6,
+                          offset: Offset(0, 3.0),
+                          blurRadius: 6.0,
                         ),
                       ],
                       image: DecorationImage(
@@ -203,13 +195,18 @@ class IntroNameStep extends StatelessWidget {
                     child: ButtonTheme(
                       minWidth: double.infinity,
                       child: FlatButton(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
                         onPressed: () {
-                         if(_formKey.currentState.validate()){
-                           Navigator.push(
-                               context,
-                               MaterialPageRoute(
-                                   builder: (context) => IntroAgeStep()));
-                         }
+                          if(validInput) {
+                            _setData('name', _nameController.text);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => IntroAgeStep()
+                                )
+                            );
+                          }
                         },
                         child: Text(
                           "Continua",
@@ -230,7 +227,8 @@ class IntroNameStep extends StatelessWidget {
       ),
     );
   }
+
   void _setData(String key, String value) {
-    MyApp.sharedPreferences.setString(key, value);
+    Fisio.sharedPreferences.setString(key, value);
   }
 }
