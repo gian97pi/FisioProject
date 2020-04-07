@@ -1,6 +1,6 @@
 
 
-import 'package:fisioproject/ui/elements/catalog_listview.dart';
+import 'package:fisioproject/ui/elements/day_selection_listview.dart';
 import 'package:flutter/material.dart';
 
 class GiornoAggunta extends StatefulWidget{
@@ -18,13 +18,13 @@ class _GiornoAgguntaState extends State<GiornoAggunta> {
     // TODO: implement build
     List<String> utensil = [
       'Appliance',
-      'Body','ciao','ciao','ciqo','ciao','ciao','ciao','ciao','c','c','c','c','c'
+      'Body',
     ];
 
     return Scaffold(
         body:Container(
-          child: Text(widget.argument.toString())
-
+          //child: Text(widget.argument.toString())
+          child:DaySelectionListview(entries: utensil)
         )
     );
   }
