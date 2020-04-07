@@ -45,7 +45,7 @@ class Schede extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: "Rubik",
-                            fontWeight: FontWeight.w800,
+                            fontWeight: FontWeight.w500,
                             fontSize: 25,
                           ),
                         ),

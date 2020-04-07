@@ -1,5 +1,5 @@
 import 'package:fisioproject/presentation/custom_icons.dart';
-import 'package:fisioproject/ui/views/giorno_aggiunta.dart';
+import 'package:fisioproject/ui/views/day_selection.dart';
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/material.dart';
 //import 'router.dart' as router;
@@ -22,7 +22,6 @@ class ListState extends State<DaySelectionListview> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Column(
         children: <Widget>[
           Container(
@@ -53,18 +52,15 @@ class ListState extends State<DaySelectionListview> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-                              child: Text(widget.entries[index],
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      color: AppColors.primaryText,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500)),
-                            ),
+                            Text(widget.entries[index],
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: AppColors.primaryText,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500)),
                             Icon(
                               Custom.next,
-                              size: 20,
+                              size: 17,
                               color: AppColors.primaryText,
                             ),
                           ],
@@ -76,14 +72,14 @@ class ListState extends State<DaySelectionListview> {
                     Navigator.push(
                         context,
                         new MaterialPageRoute(
-                            builder: (context) => GiornoAggunta(
+                            builder: (context) => DaySelection(
                                 argument: widget.entries[index])));
                     //passa come argomento la selezione
                   },
                 );
               },
               separatorBuilder: (BuildContext context, int index) =>
-                  const Divider(height: 10),
+                  const Divider(height: 6),
             ),
           ),
         ],

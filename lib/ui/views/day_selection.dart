@@ -3,19 +3,18 @@
 import 'package:fisioproject/ui/elements/day_selection_listview.dart';
 import 'package:flutter/material.dart';
 
-class GiornoAggunta extends StatefulWidget{
+class DaySelection extends StatefulWidget{
   final String argument;
 
-  const GiornoAggunta({Key key, @required this.argument}) : super(key: key);
+  const DaySelection({Key key, @required this.argument}) : super(key: key);
 
   @override
-  _GiornoAgguntaState createState() => _GiornoAgguntaState();
+  _DaySelectionState createState() => _DaySelectionState();
 }
 
-class _GiornoAgguntaState extends State<GiornoAggunta> {
+class _DaySelectionState extends State<DaySelection> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     List<String> utensil = [
       'Appliance',
       'Body',
