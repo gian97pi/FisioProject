@@ -2,7 +2,7 @@ import 'package:fisioproject/ui/views/bottom_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/values/colors.dart';
 
-class CompleteProfile extends StatelessWidget {
+class IntroCompleteStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
