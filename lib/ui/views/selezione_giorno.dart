@@ -1,6 +1,6 @@
 import 'package:fisioproject/presentation/custom_icons.dart';
 
-import 'package:fisioproject/ui/elements/catalog_listview.dart';
+import 'package:fisioproject/ui/elements/day_selection_listview.dart';
 
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/material.dart';

@@ -1,76 +1,50 @@
-import 'package:fisioproject/ui/views/giorno_aggiunta.dart';
 import 'package:flutter/material.dart';
-//import 'router.dart' as router;
 
 // ignore: must_be_immutable
-class CatalogListView extends StatefulWidget {
+class CatalogListViewCard extends StatefulWidget {
   @override
   ListState createState() => ListState();
 
   final List<String> entries;
+  final String route;
 
-  const CatalogListView({Key key, @required this.entries})
-      : super(
-            key:
-                key); //costruttore del widget personalizzato, uso una sola listview per tutte le pagine
+  const CatalogListViewCard({Key key, @required this.entries, this.route}) : super(key: key); //costruttore del widget personalizzato, uso una sola listview per tutte le pagine
 }
 
-class ListState extends State<CatalogListView> {
-  bool itemActive;
+class ListState extends State<CatalogListViewCard>{
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Container(
-                child: ListView.separated(
-                  //crea una listview con gli elementi distanziati
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(8),
-                  itemCount: widget.entries.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      //TODO mettere l'icona gestita da itemActive
-                      child: Container(
-                        height: 50,
-                        child: Center(
-                          child: Text(
-                            '${widget.entries[index]}',
-                            style: TextStyle(
-                              color: Colors.black45,
-                              fontFamily: "Rubik",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 15,
-                            ),
-                          ),
-
-                        ),
-                      ),
-                      onTap: () {
-                        print(widget.entries[index]);
-                        //Navigator.pushNamed(context, widget.route , arguments: widget.entries[index]);
-                        Navigator.push(
-                            context,
-                            new MaterialPageRoute(
-                                builder: (context) => GiornoAggunta(
-                                    argument: widget.entries[index])));
-                        //passa come argomento la selezione
-                      },
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) =>
-                      const Divider(),
-                ),
-              ),
-            ],
+    return Column(
+        children: <Widget>[
+          Container(
+            child: ListView.separated(   //crea una listview con gli elementi distanziati
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.all(8),
+              itemCount: widget.entries.length,
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                  child:Container(
+                    height: 50,
+                    child: Center(child: Text('${widget.entries[index]}'
+                    ),
+                    ),
+                  ),onTap: (){
+                  print(widget.entries[index]);
+                  Navigator.pushNamed(context, widget.route , arguments: widget.entries[index]);
+                  /*Navigator.push(context,new MaterialPageRoute(
+                      builder: (context) => ExUtensilSelection(from: widget.entries[index])))
+                  //passa come argomento la selezione
+                   */
+                },
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) => const Divider(),
+            ),
           ),
-        ),
-      ),
+        ],
     );
   }
 }
