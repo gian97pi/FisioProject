@@ -5,7 +5,7 @@ import 'package:fisioproject/values/colors.dart';
 
 import '../../main.dart';
 
-class ProfileName extends StatelessWidget {
+class IntroNameStep extends StatelessWidget {
   final _nameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
@@ -208,7 +208,7 @@ class ProfileName extends StatelessWidget {
                            Navigator.push(
                                context,
                                MaterialPageRoute(
-                                   builder: (context) => ProfileAge()));
+                                   builder: (context) => IntroAgeStep()));
                          }
                         },
                         child: Text(
