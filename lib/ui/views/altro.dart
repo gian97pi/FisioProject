@@ -193,7 +193,7 @@ class _AltroState extends State<Altro> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text('Ricordami di fare esercizio alle',
+                            Text('Promemoria esercizi alle',
                                 style: TextStyle(
                                     color: AppColors.primaryText,
                                     fontSize: 15,
@@ -201,7 +201,7 @@ class _AltroState extends State<Altro> {
                                 )
                             ),
                             Container(
-                              width: 150,
+                              width: 60,
                               child: Text(                        //Orario notifiche
                                   _timeToDisplay,
                                   textAlign: TextAlign.right,

@@ -10,7 +10,7 @@ class IntroCompleteStep extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.fromLTRB(14, 20, 14, 0),
+              padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

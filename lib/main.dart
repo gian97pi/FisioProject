@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:fisioproject/ui/views/intro_name_step.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/values/themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,7 +10,7 @@ import 'classes/user.dart';
 void main() => runApp(
     DevicePreview(
       //!kReleaseMode
-      enabled: false,
+      enabled: !kReleaseMode,
       builder: (context) => Fisio(),
     )
 );

@@ -36,68 +36,71 @@ class _BottomMenuState extends State<BottomMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: tabs[_currentIndex]
-      ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/bottom_menu_bg.png'),
-              fit: BoxFit.fill
-          )
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: Container(
+          child: tabs[_currentIndex]
         ),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/bottom_menu_bg.png'),
+                fit: BoxFit.fill
+            )
+          ),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
 
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Color.fromRGBO(255, 255, 255, 99),
-          iconSize: 25,
-          selectedFontSize: 12,
-          unselectedFontSize: 12,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Color.fromRGBO(255, 255, 255, 99),
+            iconSize: 25,
+            selectedFontSize: 12,
+            unselectedFontSize: 12,
 
-          currentIndex: _currentIndex,
+            currentIndex: _currentIndex,
 
-          items: [
-            BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Icon(Custom.home),
-                ),
-                title: Text("Riepilogo")
-            ),
+            items: [
+              BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Icon(Custom.home),
+                  ),
+                  title: Text("Riepilogo")
+              ),
 
-            BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Icon(Custom.clipboard),
-                ),
-                title: Text("Scheda")
-            ),
+              BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Icon(Custom.clipboard),
+                  ),
+                  title: Text("Scheda")
+              ),
 
-            BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Icon(Custom.exercise),
-                ),
-                title: Text("Esercizi")
-            ),
+              BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Icon(Custom.exercise),
+                  ),
+                  title: Text("Esercizi")
+              ),
 
-            BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Icon(Custom.other),
-                ),
-                title: Text("Altro")
-            ),
-          ],
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
+              BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Icon(Custom.other),
+                  ),
+                  title: Text("Altro")
+              ),
+            ],
+            onTap: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+          ),
         ),
       ),
     );
