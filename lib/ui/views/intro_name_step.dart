@@ -2,12 +2,18 @@ import 'package:fisioproject/ui/views/intro_age_step.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../main.dart';
 
-class IntroNameStep extends StatelessWidget {
+class IntroNameStep extends StatefulWidget {
+  @override
+  _IntroNameStepState createState() => _IntroNameStepState();
+}
+
+class _IntroNameStepState extends State<IntroNameStep> {
   final _nameController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+
   bool validInput = true;
 
   @override
@@ -198,7 +204,7 @@ class IntroNameStep extends StatelessWidget {
                         highlightColor: Colors.transparent,
                         splashColor: Colors.transparent,
                         onPressed: () {
-                          if(validInput) {
+                          if(_nameController.text != "") {
                             _setData('name', _nameController.text);
                             Navigator.push(
                                 context,
@@ -206,6 +212,18 @@ class IntroNameStep extends StatelessWidget {
                                     builder: (context) => IntroAgeStep()
                                 )
                             );
+                          }
+                          else{
+                            Fluttertoast.showToast(
+                                msg: "Inserisci un nove valido",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 3,
+                                backgroundColor: AppColors.primaryText,
+                                textColor: Colors.white,
+                                fontSize: 16.0
+                            );
+
                           }
                         },
                         child: Text(
