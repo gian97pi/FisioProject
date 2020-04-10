@@ -1,3 +1,4 @@
+import 'package:fisioproject/ui/elements/custom_dialog.dart';
 import 'package:fisioproject/ui/views/intro_age_step.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/values/colors.dart';
@@ -214,14 +215,14 @@ class _IntroNameStepState extends State<IntroNameStep> {
                             );
                           }
                           else{
-                            Fluttertoast.showToast(
-                                msg: "Inserisci un nove valido",
-                                toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.BOTTOM,
-                                timeInSecForIosWeb: 3,
-                                backgroundColor: AppColors.primaryText,
-                                textColor: Colors.white,
-                                fontSize: 16.0
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) => CustomDialog(
+                                title: "Attenzione",
+                                description:
+                                "Devi inserire un nome valido per continuare!",
+                                buttonText: "Riprova",
+                              ),
                             );
                           }
                         },
@@ -248,4 +249,7 @@ class _IntroNameStepState extends State<IntroNameStep> {
   void _setData(String key, String value) {
     Fisio.sharedPreferences.setString(key, value);
   }
+
+
 }
+

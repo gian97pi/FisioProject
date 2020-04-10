@@ -1,9 +1,4 @@
-import 'package:fisioproject/ui/views/type_exercise.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:fisioproject/presentation/custom_icons.dart';
-import 'package:fisioproject/ui/elements/catalog_listview.dart';
-import 'package:fisioproject/classes/router.dart' as Router;
-import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseList extends StatefulWidget {
