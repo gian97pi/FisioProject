@@ -1,5 +1,7 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:fisioproject/ui/views/bottom_menu.dart';
 import 'package:fisioproject/ui/views/intro_name_step.dart';
+import 'package:fisioproject/ui/views/riepilogo.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/values/themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -33,7 +35,7 @@ class Fisio extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       title: 'Fisio',
       theme: AppThemes.fisio,
-      home: IntroNameStep(),
+      home: BottomMenu(),
     );
   }
 }
