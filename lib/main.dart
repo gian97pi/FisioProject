@@ -37,7 +37,8 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       title: 'Fisio',
       theme: AppThemes.fisio,
-      home: BottomMenu(),
+      //home: BottomMenu(),
+      home: GiornoAggunta(),
     );
   }
 }
