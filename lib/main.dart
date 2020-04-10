@@ -5,6 +5,7 @@ import 'package:fisioproject/ui/views/riepilogo.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/values/themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fisioproject/classes/router.dart' as router;
 
 import 'classes/user.dart';
 
@@ -30,6 +31,11 @@ class Fisio extends StatelessWidget {
     });
 
     return MaterialApp(
+      onGenerateRoute: router.RouteHandler.generateRoute,
+      onUnknownRoute: (settings) => MaterialPageRoute(
+          builder: (context) => router.UndefinedView(
+            name: settings.name,
+          )),
       debugShowCheckedModeBanner: false,
       locale: DevicePreview.of(context).locale,
       builder: DevicePreview.appBuilder,
