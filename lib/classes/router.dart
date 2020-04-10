@@ -1,17 +1,19 @@
+import 'package:fisioproject/ui/views/selezione_attrezzatura.dart';
+import 'package:fisioproject/ui/views/selezione_esercizio.dart';
 import 'package:flutter/material.dart';
 
 
 class RouteHandler {
 
-  static const String ExListRoute = "exercise";
-  static const String ExUtensilRoute = "utensil";
+  static const String ExerciseListRoute = "exercise";
+  static const String AttrEserciziRoute = "utensil";
 
   static Route<dynamic> generateRoute(RouteSettings settings) { //gestisce dove mandare il navigator
     switch (settings.name) {
-      /*case ExUtensilRoute:
-        return MaterialPageRoute(builder: (context) => ExUtensilSelection());
-      case ExListRoute:
-        return MaterialPageRoute(builder: (context) => ExerciseList());*/
+      case AttrEserciziRoute:
+        return MaterialPageRoute(builder: (context) => SelezioneAttrezzatura());
+      case ExerciseListRoute:
+        return MaterialPageRoute(builder: (context) => ExerciseList());
       default:
         return MaterialPageRoute(builder: (context) => UndefinedView());
     }

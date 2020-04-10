@@ -223,7 +223,6 @@ class _IntroNameStepState extends State<IntroNameStep> {
                                 textColor: Colors.white,
                                 fontSize: 16.0
                             );
-
                           }
                         },
                         child: Text(
