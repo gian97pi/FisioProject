@@ -1,4 +1,4 @@
-import 'Exercise.dart';
+import 'exercise.dart';
 
 class Schedule{
   String day;

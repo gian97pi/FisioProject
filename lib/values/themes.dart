@@ -9,6 +9,8 @@ class AppThemes {
 			brightness: Brightness.light,
 			backgroundColor: AppColors.primaryBackground,
 			scaffoldBackgroundColor: AppColors.primaryBackground,
+			highlightColor: Colors.transparent,
+			splashColor: Colors.transparent
 	);
 
 }

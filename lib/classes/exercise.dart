@@ -8,5 +8,4 @@ class Exercise{
 
   Exercise(this.name,this.descr,this.tags,this.url,this.diff,this.rep);
 
-
 }

@@ -1,7 +1,6 @@
 
 
 import 'package:fisioproject/classes/ProvaEx.dart';
-import 'package:fisioproject/ui/elements/day_selection_listview.dart';
 import 'package:fisioproject/ui/elements/recap_listview%5E2.dart';
 import 'package:flutter/material.dart';
 
@@ -19,8 +18,7 @@ class _GiornoAgguntaState extends State<GiornoAggunta> {
   Widget build(BuildContext context) {
     // TODO: implement build
     final List<ProvaEx> prova = [new ProvaEx('Lunedì',['curl','crunch','slam']),
-      new ProvaEx('Martedì', ['calf','dito','simone']),
-      new ProvaEx('Domenica', ['calcagno','santucci','flavio','matteobruno'])];
+      new ProvaEx('Martedì', ['calf','dito','simone'])];
 
     return Scaffold(
         body:SafeArea(

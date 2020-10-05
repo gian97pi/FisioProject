@@ -1,17 +1,18 @@
-import 'package:fisioproject/ui/elements/day_selection_listview.dart';
+import 'package:fisioproject/presentation/custom_icons.dart';
+import 'package:fisioproject/ui/elements/selezione_giorno_listview.dart';
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fisioproject/ui/views/scheda.dart';
 
 class SelezioneGiorno extends StatelessWidget {
   final List<String> giorni = [
-    'Lunedì',
-    'Martedì',
-    'Mercoledì',
-    'Giovedì',
-    'Venerdì',
-    'Sabato',
-    'Domenica',
+    'LUNEDÌ',
+    'MARTEDÌ',
+    'MERCOLEDÌ',
+    'GIOVEDÌ',
+    'VENERDÌ',
+    'SABATO',
+    'DOMENICA',
   ];
 
   @override
@@ -22,40 +23,45 @@ class SelezioneGiorno extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.fromLTRB(24.0, 0, 24.0, 12),
+              padding: const EdgeInsets.fromLTRB(24.0, 8.0, 24.0, 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Align(
-                    child: GestureDetector(
-                        child: Text(
-                          "INDIETRO",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: AppColors.primaryText,
-                            fontFamily: "Rubik",
-                            fontWeight: FontWeight.w400,
-                            fontSize: 15,
+                  GestureDetector(
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(right: 4.0),
+                            child: Icon(
+                              Custom.back,
+                              size: 17,
+                              color: AppColors.primaryText,
+                            ),
                           ),
-                        ),
-                        onTap: () {
-                          Navigator.pop(
-                            context,
-                            MaterialPageRoute(builder: (context) => Schede()),
-                          );
-                        }),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Text(
-                      "AGGIUNGI",
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 41, 171, 166),
-                        fontFamily: "Rubik",
-                        fontWeight: FontWeight.w700,
-                        fontSize: 15,
+                          Text(
+                            "INDIETRO",
+                            style: TextStyle(
+                              color: AppColors.primaryText,
+                              fontFamily: "Rubik",
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
                       ),
+                      onTap: () {
+                        Navigator.pop(
+                          context,
+                          MaterialPageRoute(builder: (context) => Schede()),
+                        );
+                      }),
+                  Text(
+                    "FATTO",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 41, 171, 166),
+                      fontFamily: "Rubik",
+                      fontWeight: FontWeight.w700,
+                      fontSize: 15,
                     ),
                   ),
                 ],
@@ -95,7 +101,7 @@ class SelezioneGiorno extends StatelessWidget {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontFamily: "Rubik",
-                                    fontWeight: FontWeight.w800,
+                                    fontWeight: FontWeight.w500,
                                     fontSize: 25,
                                   ),
                                 ),
@@ -104,7 +110,7 @@ class SelezioneGiorno extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(30, 8, 0, 20),
                               child: Text(
-                                "Testo di esempio.",
+                                "Organizza i tuoi esercizi nei giorni che preferisci.",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Colors.white,

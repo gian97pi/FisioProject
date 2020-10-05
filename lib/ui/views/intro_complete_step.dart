@@ -10,7 +10,7 @@ class IntroCompleteStep extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.fromLTRB(14, 20, 14, 0),
+              padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,8 +109,8 @@ class IntroCompleteStep extends StatelessWidget {
                         boxShadow: [
                           BoxShadow(
                             color: Color.fromARGB(41, 0, 0, 0),
-                            offset: Offset(0, 3),
-                            blurRadius: 6,
+                            offset: Offset(0, 3.0),
+                            blurRadius: 6.0,
                           ),
                         ],
                         image: DecorationImage(
@@ -122,11 +122,15 @@ class IntroCompleteStep extends StatelessWidget {
                       child: ButtonTheme(
                         minWidth: double.infinity,
                         child: FlatButton(
+                          highlightColor: Colors.transparent,
+                          splashColor: Colors.transparent,
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => BottomMenu()));
+                                    builder: (context) => BottomMenu()
+                                )
+                            );
                           },
                           child: Text(
                             "Inizia",

@@ -29,58 +29,56 @@ class _RecapListViewState extends State<RecapListView> {
           padding: const EdgeInsets.all(8),
           itemCount: widget.schedule.length,
           itemBuilder: (BuildContext context, int index) {
-            return Card(
-              child: Center(
-                child: Row(
-                  children: <Widget>[
-                    Text('${widget.schedule[index].day}'),
-                    ListView.separated(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (BuildContext ctx, int secondIndex) {
-                          return Container(
-                              height: 44,
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color.fromRGBO(0, 0, 0, 220),
-                                      blurRadius: 5.0,
-                                      spreadRadius: 0.5,
-                                      offset: Offset(0.0,
-                                          3.0), // shadow direction: bottom right
-                                    )
-                                  ],
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30.0)),
-                                  color: Colors.white),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 24.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          16, 0, 0, 0),
-                                      child: Text(
-                                          '${widget.schedule[index].exercise[secondIndex]}',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                              color: AppColors.primaryText,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w500)),
-                                    )
-                                  ],
-                                ),
-                              ));
-                        },
-                        separatorBuilder: (BuildContext context, int index) =>
-                            const Divider(),
-                        itemCount: widget.schedule[index].exercise.length)
-                  ],
-                ),
-              ),
+            return Row(
+              children: <Widget>[
+                Text('${widget.schedule[index].day}'),
+                Expanded(
+                  child: ListView.separated(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (BuildContext ctx, int secondIndex) {
+                        return Container(
+                            height: 44,
+                            decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color.fromRGBO(0, 0, 0, 220),
+                                    blurRadius: 5.0,
+                                    spreadRadius: 0.5,
+                                    offset: Offset(0.0,
+                                        3.0), // shadow direction: bottom right
+                                  )
+                                ],
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30.0)),
+                                color: Colors.white),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        16, 0, 0, 0),
+                                    child: Text(
+                                        '${widget.schedule[index].exercise[secondIndex]}',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                            color: AppColors.primaryText,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500)),
+                                  )
+                                ],
+                              ),
+                            ));
+                      },
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const Divider(),
+                      itemCount: widget.schedule[index].exercise.length),
+                )
+              ],
             );
           },
           separatorBuilder: (BuildContext context, int index) =>

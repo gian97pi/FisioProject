@@ -1,3 +1,4 @@
+import 'package:fisioproject/main.dart';
 import 'package:fisioproject/ui/views/bottom_menu.dart';
 import 'package:fisioproject/ui/views/intro_name_step.dart';
 import 'package:fisioproject/ui/views/intro_complete_step.dart';
@@ -6,6 +7,11 @@ import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/services.dart';
 
 class IntroAgeStep extends StatelessWidget {
+  final _ageController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  bool validInput = true;
+  
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -16,7 +22,7 @@ class IntroAgeStep extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(14, 20, 14, 0),
+                  padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +79,7 @@ class IntroAgeStep extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(24.0),
+                  padding: const EdgeInsets.only(left: 24.0, top: 24.0, right: 24.0),
                   child: Container(
                     decoration: BoxDecoration(
                       boxShadow: [
@@ -93,7 +99,7 @@ class IntroAgeStep extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(24.0, 32.0, 29.0, 0),
+                          padding: const EdgeInsets.fromLTRB(24.0, 32.0, 28.0, 0.0),
                           child: Container(
                             height: 89,
                             child: Image(
@@ -102,7 +108,7 @@ class IntroAgeStep extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
+                          padding: const EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 32.0),
                           child: Text(
                             "Quanti anni hai?",
                             textAlign: TextAlign.center,
@@ -120,8 +126,9 @@ class IntroAgeStep extends StatelessWidget {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.only(left: 24.0, top: 12.0, right: 24.0),
+                  const EdgeInsets.only(left: 24.0, top: 48.0, right: 24.0),
                   child: Container(
+                    height: 44,
                     decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
@@ -134,32 +141,32 @@ class IntroAgeStep extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
                         color: Colors.white),
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(24.0, 12.0, 24.0, 12.0),
-                      child: TextField(
-                        //Nome
-                        //controller: _ageController,
-                          textAlign: TextAlign.center,
-                          cursorWidth: 2.0,
-                          cursorColor: AppColors.primaryText,
-                          decoration: null,
-                          maxLength: 3,
-                          maxLengthEnforced: true,
-                          keyboardType: TextInputType.number,
-                          inputFormatters: <TextInputFormatter>[
-                            WhitelistingTextInputFormatter.digitsOnly
-                          ],
-                          /* onChanged: (String str) {
-                              _setData('name', str);
-                            },*/
-                          style: TextStyle(
-                              color: AppColors.primaryText,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500)),
+                      padding: EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          TextField(                                   //Età
+                              controller: _ageController,
+                              textAlign: TextAlign.center,
+                              cursorWidth: 2.0,
+                              cursorColor: AppColors.primaryText,
+                              keyboardType: TextInputType.number,
+                              decoration: null,
+                              inputFormatters: <TextInputFormatter>[
+                                WhitelistingTextInputFormatter.digitsOnly,
+                                LengthLimitingTextInputFormatter(3)
+                              ],
+                              style: TextStyle(
+                                  color: AppColors.primaryText,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500)),
+                        ],
+                      ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                  padding: const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
                   child: Container(
                     decoration: BoxDecoration(
                       boxShadow: [
@@ -178,11 +185,18 @@ class IntroAgeStep extends StatelessWidget {
                     child: ButtonTheme(
                       minWidth: double.infinity,
                       child: FlatButton(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => IntroCompleteStep()));
+                          if(validInput) {
+                            _setData('age', _ageController.text);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => IntroCompleteStep()
+                                )
+                            );
+                          }
                         },
                         child: Text(
                           "Continua",
@@ -202,5 +216,9 @@ class IntroAgeStep extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _setData(String key, String value) {
+    Fisio.sharedPreferences.setString(key, value);
   }
 }
