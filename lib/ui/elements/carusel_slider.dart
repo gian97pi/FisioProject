@@ -82,13 +82,13 @@ class _FisioCaruselState extends State<FisioCarusel> {
           enlargeCenterPage: true,
           viewportFraction: 0.9,
           aspectRatio: 2.0,
-          /*onPageChanged: (index) {
-            setState(() {
-              _current = index;
-            });
-          },*/
+          /**/
         ),
-
+        /*onPageChanged: (index) {
+          setState(() {
+            _current = index;
+          });
+        },*/
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
