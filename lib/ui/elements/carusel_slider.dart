@@ -75,17 +75,20 @@ class _FisioCaruselState extends State<FisioCarusel> {
     return Column(children: [
       CarouselSlider(
         items: child,
-        autoPlay: false,
-        scrollPhysics: BouncingScrollPhysics(),
-        enableInfiniteScroll: false,
-        enlargeCenterPage: true,
-        viewportFraction: 0.9,
-        aspectRatio: 2.0,
-        onPageChanged: (index) {
-          setState(() {
-            _current = index;
-          });
-        },
+        options: CarouselOptions(
+          autoPlay: false,
+          scrollPhysics: BouncingScrollPhysics(),
+          enableInfiniteScroll: false,
+          enlargeCenterPage: true,
+          viewportFraction: 0.9,
+          aspectRatio: 2.0,
+          /*onPageChanged: (index) {
+            setState(() {
+              _current = index;
+            });
+          },*/
+        ),
+
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
