@@ -41,7 +41,7 @@ class Fisio extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       title: 'Fisio',
       theme: AppThemes.fisio,
-      home: BottomMenu(),
+      home: IntroNameStep(),
     );
   }
 }
