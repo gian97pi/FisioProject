@@ -83,7 +83,7 @@ class _FisioCaruselState extends State<FisioCarusel> {
           scrollPhysics: BouncingScrollPhysics(),
           enableInfiniteScroll: false,
           enlargeCenterPage: true,
-          viewportFraction: 0.9,
+          viewportFraction: 0.82,
           aspectRatio: 2.0,
           onPageChanged: (index, reason) {
             setState(() {
