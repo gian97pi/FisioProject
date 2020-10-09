@@ -39,9 +39,12 @@ final List child = map<Widget>(
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Color.fromARGB(200, 0, 0, 0), Color.fromARGB(0, 0, 0, 0)],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
+                    colors: [
+                      const Color.fromARGB(200, 0, 0, 0),
+                      const Color.fromARGB(0, 0, 0, 0)
+                    ],
                   ),
                 ),
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -80,15 +83,14 @@ class _FisioCaruselState extends State<FisioCarusel> {
           scrollPhysics: BouncingScrollPhysics(),
           enableInfiniteScroll: false,
           enlargeCenterPage: true,
-          viewportFraction: 0.9,
+          viewportFraction: 0.82,
           aspectRatio: 2.0,
-          /*onPageChanged: (index) {
+          onPageChanged: (index, reason) {
             setState(() {
               _current = index;
             });
-          },*/
+          },
         ),
-
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
