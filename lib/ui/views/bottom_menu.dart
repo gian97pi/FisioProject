@@ -27,11 +27,6 @@ class _BottomMenuState extends State<BottomMenu> {
     ),
     InfoEsercizio(),
     Altro(),
-
-    /*ChangeNotifierProvider<User>.value(
-      value: User(),
-      child: Prova(),
-    )*/
   ];
 
   @override

@@ -1,24 +1,25 @@
+import 'package:fisioproject/ui/views/type_exercise.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:fisioproject/presentation/custom_icons.dart';
-import 'package:fisioproject/ui/elements/selezione_giorno_listview.dart';
+import 'package:fisioproject/ui/elements/catalog_listview.dart';
+import 'package:fisioproject/classes/router.dart' as Router;
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:fisioproject/ui/views/scheda.dart';
 
-class SelezioneGiorno extends StatelessWidget {
-  final List<String> giorni = [
-    'LUNEDÌ',
-    'MARTEDÌ',
-    'MERCOLEDÌ',
-    'GIOVEDÌ',
-    'VENERDÌ',
-    'SABATO',
-    'DOMENICA',
-  ];
+class SelezioneAttrezzatura extends StatefulWidget {
+  @override
+  _SelezioneAttrezzaturaState createState() => _SelezioneAttrezzaturaState();
+}
 
+class _SelezioneAttrezzaturaState extends State<SelezioneAttrezzatura> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      resizeToAvoidBottomPadding: false,
+    List<String> attrezzatura = [
+      'CON ATTREZZATURA',
+      'SENZA ATTREZZATURA',
+    ];
+
+    return Scaffold(
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -52,7 +53,7 @@ class SelezioneGiorno extends StatelessWidget {
                       onTap: () {
                         Navigator.pop(
                           context,
-                          MaterialPageRoute(builder: (context) => Schede()),
+                          MaterialPageRoute(builder: (context) => TypeExerciseSelection()),
                         );
                       }),
                   Text(
@@ -92,11 +93,27 @@ class SelezioneGiorno extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
+                              padding: const EdgeInsets.fromLTRB(30, 15, 0, 0),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Esercizi",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: "Rubik",
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
                               padding: const EdgeInsets.fromLTRB(30, 20, 0, 0),
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "Scegli un giorno \ndella settimana.",
+                                  "Scegli una categoria \ndi esercizio",
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     color: Colors.white,
@@ -110,7 +127,7 @@ class SelezioneGiorno extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(30, 8, 0, 20),
                               child: Text(
-                                "Organizza i tuoi esercizi nei giorni che preferisci.",
+                                "Test di esempio.",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Colors.white,
@@ -126,7 +143,7 @@ class SelezioneGiorno extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0),
-                      child: DaySelectionListview(entries: giorni),
+                      child: CatalogListView(entries: attrezzatura, route: Router.RouteHandler.ExerciseListRoute),
                     )
                   ],
                 ),

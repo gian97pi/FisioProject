@@ -1,5 +1,5 @@
 import 'package:fisioproject/presentation/custom_icons.dart';
-import 'package:fisioproject/ui/views/day_excercise.dart';
+import 'package:fisioproject/ui/views/type_exercise.dart';
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/material.dart';
 //import 'router.dart' as router;
@@ -73,7 +73,7 @@ class ListState extends State<DaySelectionListview> {
                       Navigator.push(
                           context,
                           new MaterialPageRoute(
-                              builder: (context) => DaySelection(
+                              builder: (context) => TypeExerciseSelection(
                                   argument: widget.entries[index])));
                       //passa come argomento la selezione
                     },
