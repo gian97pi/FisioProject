@@ -1,4 +1,5 @@
 import 'package:fisioproject/main.dart';
+import 'package:fisioproject/ui/elements/custom_dialog.dart';
 import 'package:fisioproject/ui/views/bottom_menu.dart';
 import 'package:fisioproject/ui/views/intro_name_step.dart';
 import 'package:fisioproject/ui/views/intro_complete_step.dart';
@@ -10,7 +11,6 @@ class IntroAgeStep extends StatelessWidget {
   final _ageController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  bool validInput = true;
   
   @override
   Widget build(BuildContext context) {
@@ -188,13 +188,24 @@ class IntroAgeStep extends StatelessWidget {
                         highlightColor: Colors.transparent,
                         splashColor: Colors.transparent,
                         onPressed: () {
-                          if(validInput) {
+                          if(_ageController.text != "") {
                             _setData('age', _ageController.text);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => IntroCompleteStep()
                                 )
+                            );
+                          }
+                          else{
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) => CustomDialog(
+                                title: "Attenzione",
+                                description:
+                                "Devi inserire un'età valida per continuare!",
+                                buttonText: "Riprova",
+                              ),
                             );
                           }
                         },
