@@ -47,6 +47,7 @@ class _AltroState extends State<Altro> {
   void initState() {
     super.initState();
     User user = _getData();
+
     setState(() {
       _teNameController.text = user.name;
       _teAgeController.text = user.age;

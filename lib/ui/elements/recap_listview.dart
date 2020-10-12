@@ -1,4 +1,3 @@
-import 'package:fisioproject/classes/ProvaEx.dart';
 import 'package:fisioproject/classes/schedule.dart';
 import 'package:fisioproject/presentation/custom_icons.dart';
 import 'package:fisioproject/values/colors.dart';
@@ -8,12 +7,10 @@ class RecapListView extends StatefulWidget {
   @override
   _RecapListViewState createState() => _RecapListViewState();
 
-  final List<ProvaEx> schedule;
+  final Schedule schedule;
 
   const RecapListView({Key key, @required this.schedule})
-      : super(
-      key:
-      key);
+      : super(key: key);
 }
 
 class _RecapListViewState extends State<RecapListView> {
@@ -27,11 +24,11 @@ class _RecapListViewState extends State<RecapListView> {
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.all(8),
-          itemCount: widget.schedule.length,
+          itemCount: widget.schedule.sessions.length,
           itemBuilder: (BuildContext context, int index) {
             return Row(
               children: <Widget>[
-                Text('${widget.schedule[index].day}'),
+                Text('${widget.schedule.sessions[index].day}'),
                 Expanded(
                   child: ListView.separated(
                       shrinkWrap: true,
@@ -63,7 +60,7 @@ class _RecapListViewState extends State<RecapListView> {
                                     padding: const EdgeInsets.fromLTRB(
                                         16, 0, 0, 0),
                                     child: Text(
-                                        '${widget.schedule[index].exercise[secondIndex]}',
+                                        '${widget.schedule.sessions[index].exercises[secondIndex]}',
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                             color: AppColors.primaryText,
@@ -76,7 +73,7 @@ class _RecapListViewState extends State<RecapListView> {
                       },
                       separatorBuilder: (BuildContext context, int index) =>
                           const Divider(),
-                      itemCount: widget.schedule[index].exercise.length),
+                      itemCount: widget.schedule.sessions[index].exercises.length),
                 )
               ],
             );
