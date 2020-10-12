@@ -1,8 +1,11 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:fisioproject/presentation/custom_icons.dart';
 import 'package:fisioproject/ui/elements/selezione_giorno_listview.dart';
-import 'package:fisioproject/values/colors.dart';
-import 'package:flutter/material.dart';
 import 'package:fisioproject/ui/views/scheda.dart';
+import 'package:fisioproject/values/colors.dart';
 
 class SelezioneGiorno extends StatelessWidget {
   final List<String> giorni = [

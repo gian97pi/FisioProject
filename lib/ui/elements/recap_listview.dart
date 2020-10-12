@@ -1,7 +1,10 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:fisioproject/classes/schedule.dart';
 import 'package:fisioproject/presentation/custom_icons.dart';
 import 'package:fisioproject/values/colors.dart';
-import 'package:flutter/material.dart';
 
 class RecapListView extends StatefulWidget {
   @override

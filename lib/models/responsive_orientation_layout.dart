@@ -1,5 +1,8 @@
-import 'package:fisioproject/values/dimens.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:fisioproject/values/dimens.dart';
 
 class ResponsiveOrientationLayout extends StatelessWidget {
 

@@ -1,9 +1,14 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:fisioproject/classes/double_button_switcher.dart';
 import 'package:fisioproject/ui/elements/nuova_scheda_button.dart';
 import 'package:fisioproject/ui/elements/schedule_double_button.dart';
 import 'package:fisioproject/ui/views/scheda_predefinita.dart';
-import 'package:provider/provider.dart';
 
 class Schede extends StatelessWidget {
   @override

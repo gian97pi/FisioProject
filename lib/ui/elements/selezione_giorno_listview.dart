@@ -1,7 +1,11 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:fisioproject/presentation/custom_icons.dart';
 import 'package:fisioproject/ui/views/type_exercise.dart';
 import 'package:fisioproject/values/colors.dart';
-import 'package:flutter/material.dart';
+
 //import 'router.dart' as router;
 
 // ignore: must_be_immutable

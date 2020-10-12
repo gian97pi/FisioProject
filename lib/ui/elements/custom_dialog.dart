@@ -1,6 +1,9 @@
-import 'package:fisioproject/presentation/custom_icons.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:fisioproject/presentation/custom_icons.dart';
 import 'package:fisioproject/values/colors.dart';
 
 class CustomDialog extends StatelessWidget {

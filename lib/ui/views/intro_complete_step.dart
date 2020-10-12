@@ -1,5 +1,8 @@
-import 'package:fisioproject/ui/views/bottom_menu.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:fisioproject/ui/views/bottom_menu.dart';
 import 'package:fisioproject/values/colors.dart';
 
 class IntroCompleteStep extends StatelessWidget {

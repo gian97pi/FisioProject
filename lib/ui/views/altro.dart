@@ -1,15 +1,19 @@
+// Dart imports:
 import 'dart:io' show Platform;
 
-import 'package:commons/commons.dart';
-
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// Package imports:
+import 'package:commons/commons.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
-import 'package:fisioproject/main.dart';
+// Project imports:
 import 'package:fisioproject/classes/user.dart';
+import 'package:fisioproject/main.dart';
+import 'package:fisioproject/utils/shared_preferences.dart';
 import 'package:fisioproject/values/colors.dart';
 
 class Altro extends StatefulWidget {
@@ -38,7 +42,7 @@ class _AltroState extends State<Altro> {
             _timeToDisplay = DateFormat.Hm().format(dateTime);
             _currentDt = currentNotificationDt(_timeToDisplay);
           });
-          _setData('notificationTime', _timeToDisplay);
+          setData('notificationTime', _timeToDisplay);
         });
   }
 
@@ -46,7 +50,7 @@ class _AltroState extends State<Altro> {
   @override
   void initState() {
     super.initState();
-    User user = _getData();
+    User user = User.get(Fisio.sharedPreferences);
 
     setState(() {
       _teNameController.text = user.name;
@@ -74,18 +78,6 @@ class _AltroState extends State<Altro> {
         minute: hourMin[1]);
   }
 
-  User _getData()  {
-    return User.get(Fisio.sharedPreferences);
-  }
-
-  void _setData(String key, String value) {
-    Fisio.sharedPreferences.setString(key, value);
-  }
-
-  void _setBool(String key, bool value)  {
-    Fisio.sharedPreferences.setBool(key, value);
-  }
-
   Widget NotificationSwitch() {
     if (Platform.isIOS) {
       return CupertinoSwitch(
@@ -93,7 +85,7 @@ class _AltroState extends State<Altro> {
           onChanged: (status) {
             setState(() {
               _notificationsEnabled = status;
-              _setBool('notificationsEnabled', status);
+              setBool('notificationsEnabled', status);
             });
           }
       );
@@ -104,7 +96,7 @@ class _AltroState extends State<Altro> {
         onChanged: (status) {
           setState(() {
             _notificationsEnabled = status;
-            _setBool('notificationsEnabled', status);
+            setBool('notificationsEnabled', status);
           });
         },
       );
@@ -281,7 +273,7 @@ class _AltroState extends State<Altro> {
                               cursorColor: AppColors.primaryText,
                               decoration: null,
                               onChanged: (String str) {
-                                _setData('name', str);
+                                setData('name', str);
                               },
                               style: TextStyle(
                                 color: AppColors.primaryText,
@@ -337,7 +329,7 @@ class _AltroState extends State<Altro> {
                                   LengthLimitingTextInputFormatter(3)
                                 ],
                                 onChanged: (String str) {
-                                  _setData('age', str);
+                                  setData('age', str);
                                 },
                                 style: TextStyle(
                                     color: AppColors.primaryText,

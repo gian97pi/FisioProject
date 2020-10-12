@@ -1,13 +1,18 @@
-import 'package:fisioproject/classes/double_button_switcher.dart';
-import 'package:fisioproject/ui/views/info_esercizio.dart';
-import 'package:fisioproject/ui/views/scheda.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
+
+// Project imports:
+import 'package:fisioproject/classes/double_button_switcher.dart';
+import 'package:fisioproject/classes/user.dart';
 import 'package:fisioproject/presentation/custom_icons.dart';
 import 'package:fisioproject/ui/views/altro.dart';
+import 'package:fisioproject/ui/views/info_esercizio.dart';
 import 'package:fisioproject/ui/views/riepilogo.dart';
-import 'package:fisioproject/classes/user.dart';
+import 'package:fisioproject/ui/views/scheda.dart';
 
 class BottomMenu extends StatefulWidget {
   @override

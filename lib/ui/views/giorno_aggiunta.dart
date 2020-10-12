@@ -1,7 +1,10 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:fisioproject/classes/schedule.dart';
 import 'package:fisioproject/classes/session.dart';
 import 'package:fisioproject/ui/elements/recap_listview.dart';
-import 'package:flutter/material.dart';
 
 class GiornoAggunta extends StatefulWidget{
   const GiornoAggunta({Key key}) : super(key: key);

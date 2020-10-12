@@ -1,10 +1,13 @@
-
-import 'package:fisioproject/values/colors.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:fisioproject/classes/double_button_switcher.dart';
-import 'package:fisioproject/ui/views/selezione_giorno.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
 
+// Project imports:
+import 'package:fisioproject/classes/double_button_switcher.dart';
+import 'package:fisioproject/ui/views/selezione_giorno.dart';
+import 'package:fisioproject/values/colors.dart';
 
 class ScheduleDoubleButton extends StatelessWidget {
 
