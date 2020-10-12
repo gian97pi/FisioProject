@@ -28,6 +28,7 @@ void main() {
 
 class Fisio extends StatelessWidget {
   static SharedPreferences sharedPreferences;
+
   Future<SharedPreferences> _getData() async {
     return await SharedPreferences.getInstance();
   }
@@ -35,8 +36,8 @@ class Fisio extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    _getData().then((u) {
-      sharedPreferences = u;
+    _getData().then((storedPrefs) {
+      sharedPreferences = storedPrefs;
     });
 
     return MaterialApp(

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:fisioproject/classes/double_buttons_model.dart';
+import 'package:fisioproject/classes/double_button_switcher.dart';
 import 'package:fisioproject/ui/elements/nuova_scheda_button.dart';
-import 'package:fisioproject/ui/elements/double_buttons.dart';
+import 'package:fisioproject/ui/elements/schedule_double_button.dart';
 import 'package:fisioproject/ui/views/scheda_predefinita.dart';
 import 'package:provider/provider.dart';
 
 class Schede extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final ButtonsModel displayer = Provider.of<ButtonsModel>(context);
+    final DoubleButtonSwitcher buttonSwitcher = Provider.of<DoubleButtonSwitcher>(context);
 
     return new Scaffold(
       body: SafeArea(
@@ -68,8 +68,8 @@ class Schede extends StatelessWidget {
                 ),
               ),
             ),
-            PressedButton(displayer),
-            displayer.default_selected ? Default() : NewSchedaButton(),
+            ScheduleDoubleButton(buttonSwitcher),
+            buttonSwitcher.isDefault ? Default() : NewSchedaButton(),
           ],
         ),
       ),

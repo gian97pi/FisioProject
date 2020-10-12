@@ -1,11 +1,11 @@
 import 'exercise.dart';
 
-class Schedule{
+class Schedule {
   String day;
-  List<Exercise> exercise;
+  List<Exercise> exercises;
 
-  Schedule(){
+  Schedule() {
     this.day = day;
-    this.exercise = exercise;
+    this.exercises = exercises;
   }
 }

@@ -57,7 +57,7 @@ class _AltroState extends State<Altro> {
       _nameController.text = user.name;
       _ageController.text = user.age;
       _timeToDisplay = user.notificationTime;
-      _enableNotifications = user.notifications;
+      _enableNotifications = user.notificationsEnabled;
     });
   }
 
@@ -80,7 +80,7 @@ class _AltroState extends State<Altro> {
           onChanged: (status) {
             setState(() {
               _enableNotifications = status;
-              _setBool('notifications', status);
+              _setBool('notificationsEnabled', status);
             });
           }
       );
@@ -91,7 +91,7 @@ class _AltroState extends State<Altro> {
         onChanged: (status) {
           setState(() {
             _enableNotifications = status;
-            _setBool('notifications', status);
+            _setBool('notificationsEnabled', status);
           });
         },
       );

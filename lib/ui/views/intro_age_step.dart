@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/services.dart';
 
+// TODO: Add the "Cannot change" warning
+
 class IntroAgeStep extends StatelessWidget {
   final _ageController = TextEditingController();
   final _formKey = GlobalKey<FormState>();

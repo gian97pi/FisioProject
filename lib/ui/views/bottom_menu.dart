@@ -1,4 +1,4 @@
-import 'package:fisioproject/classes/double_buttons_model.dart';
+import 'package:fisioproject/classes/double_button_switcher.dart';
 import 'package:fisioproject/ui/views/info_esercizio.dart';
 import 'package:fisioproject/ui/views/scheda.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +21,9 @@ class _BottomMenuState extends State<BottomMenu> {
   //Link alle varie sezioni
   final tabs = [
     Riepilogo(),
-    ChangeNotifierProvider<ButtonsModel>.value(
-    value: ButtonsModel(),
-    child: Schede(),
+    ChangeNotifierProvider<DoubleButtonSwitcher>.value(
+      value: DoubleButtonSwitcher(),
+      child: Schede(),
     ),
     InfoEsercizio(),
     Altro(),

@@ -1,17 +1,17 @@
 
 import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:fisioproject/classes/double_buttons_model.dart';
+import 'package:fisioproject/classes/double_button_switcher.dart';
 import 'package:fisioproject/ui/views/selezione_giorno.dart';
 import 'package:provider/provider.dart';
 
 
-class PressedButton extends StatelessWidget {
+class ScheduleDoubleButton extends StatelessWidget {
 
-  ButtonsModel buttonSelected;
+  DoubleButtonSwitcher buttonSwitcher;
 
-  PressedButton(ButtonsModel buttonSelected ){
-    this.buttonSelected = buttonSelected;
+  ScheduleDoubleButton(DoubleButtonSwitcher buttonSwitcher) {
+    this.buttonSwitcher = buttonSwitcher;
   }
 
   @override
@@ -26,13 +26,13 @@ class PressedButton extends StatelessWidget {
 
             FlatButton (
               onPressed: (){
-                  buttonSelected.change(true);
+                  buttonSwitcher.toDefault();
               },
               padding: EdgeInsets.symmetric(horizontal: 0.0),
 
               child: Container(
                 width: 145,
-                decoration: !buttonSelected.default_selected
+                decoration: !buttonSwitcher.isDefault
                ? BoxDecoration(
                   color: Color.fromARGB(255, 255, 255, 255),
                   boxShadow: [
@@ -68,7 +68,7 @@ class PressedButton extends StatelessWidget {
                   child: Text(
                     "PREDEFINITA",
                       textAlign: TextAlign.center,
-                    style: !buttonSelected.default_selected
+                    style: !buttonSwitcher.isDefault
                       ? TextStyle(
                         color: AppColors.primaryText,
                         fontSize: 12,
@@ -87,12 +87,12 @@ class PressedButton extends StatelessWidget {
 
             FlatButton(
               onPressed: () {
-                  buttonSelected.change(false);
+                  buttonSwitcher.toCustom();
               },
               padding: EdgeInsets.symmetric(horizontal: 0.0),
               child: Container(
                 width: 145,
-                decoration: buttonSelected.default_selected
+                decoration: buttonSwitcher.isDefault
                     ? BoxDecoration(
                   color: Color.fromARGB(255, 255, 255, 255),
                   boxShadow: [
@@ -128,7 +128,7 @@ class PressedButton extends StatelessWidget {
                   child: Text(
                       "PERSONALIZZATA",
                       textAlign: TextAlign.center,
-                      style: buttonSelected.default_selected
+                      style: buttonSwitcher.isDefault
                           ? TextStyle(
                         color: AppColors.primaryText,
                           fontSize: 12,

@@ -7,6 +7,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../main.dart';
 
+// TODO: Add the "Cannot change" warning
+
 class IntroNameStep extends StatefulWidget {
   @override
   _IntroNameStepState createState() => _IntroNameStepState();
