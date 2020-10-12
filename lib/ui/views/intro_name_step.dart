@@ -161,7 +161,9 @@ class _IntroNameStepState extends State<IntroNameStep> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        TextField(                                     //Nome
+                        TextField(
+                          //Nome
+                            textCapitalization: TextCapitalization.sentences, //prima lettera maiuscola
                             controller: _nameController,
                             textAlign: TextAlign.center,
                             cursorWidth: 2.0,
