@@ -47,7 +47,7 @@ class Fisio extends StatelessWidget {
       title: 'Fisio',
       theme: AppThemes.fisio,
       //home: BottomMenu(),
-      home: GiornoAggunta(),
+      home: IntroNameStep(),
 
     );
   }
