@@ -1,11 +1,16 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+// Project imports:
 import 'package:fisioproject/main.dart';
 import 'package:fisioproject/ui/elements/custom_dialog.dart';
 import 'package:fisioproject/ui/views/bottom_menu.dart';
-import 'package:fisioproject/ui/views/intro_name_step.dart';
 import 'package:fisioproject/ui/views/intro_complete_step.dart';
-import 'package:flutter/material.dart';
+import 'package:fisioproject/ui/views/intro_name_step.dart';
 import 'package:fisioproject/values/colors.dart';
-import 'package:flutter/services.dart';
+
+// TODO: Add the "Cannot change" warning
 
 class IntroAgeStep extends StatelessWidget {
   final _ageController = TextEditingController();

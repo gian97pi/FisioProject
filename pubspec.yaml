@@ -14,14 +14,13 @@ description: fisio application developed in Dart with Flutter
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   sqflite:
   path:
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -34,11 +33,13 @@ dependencies:
   fluttertoast: ^7.1.1
   carousel_slider: ^2.3.1
   provider: ^4.3.2+2
+  youtube_player_flutter: ^7.0.0+7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  import_sorter: ^4.2.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

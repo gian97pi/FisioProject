@@ -1,8 +1,13 @@
-import 'package:fisioproject/models/responsive_orientation_layout.dart';
-import 'package:fisioproject/ui/views/altro.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:responsive_builder/responsive_builder.dart';
+
+// Project imports:
+import 'package:fisioproject/models/responsive_orientation_layout.dart';
+import 'package:fisioproject/ui/views/altro.dart';
 
 class HomeView extends StatelessWidget {
 

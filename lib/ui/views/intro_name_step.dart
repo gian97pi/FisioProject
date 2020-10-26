@@ -1,11 +1,17 @@
-import 'package:fisioproject/ui/elements/custom_dialog.dart';
-import 'package:fisioproject/ui/views/intro_age_step.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
+// Project imports:
+import 'package:fisioproject/classes/user.dart';
+import 'package:fisioproject/ui/elements/custom_dialog.dart';
+import 'package:fisioproject/ui/views/bottom_menu.dart';
+import 'package:fisioproject/ui/views/intro_age_step.dart';
+import 'package:fisioproject/utils/shared_preferences.dart';
+import 'package:fisioproject/values/colors.dart';
 import '../../main.dart';
+
+// TODO: Add the "Cannot change" warning
 
 class IntroNameStep extends StatefulWidget {
   @override
@@ -14,8 +20,20 @@ class IntroNameStep extends StatefulWidget {
 
 class _IntroNameStepState extends State<IntroNameStep> {
   final _nameController = TextEditingController();
-
   bool validInput = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Redirect to homepage if user exists
+    User user = User.get(Fisio.sharedPreferences);
+
+    // FIXME: Navigator issue: '!_debugLocked' is not true.
+    if (user.name.isNotEmpty && user.age.isNotEmpty)
+      Navigator.of(context).push(MaterialPageRoute(builder:
+          (ctx) => BottomMenu()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -208,7 +226,7 @@ class _IntroNameStepState extends State<IntroNameStep> {
                         splashColor: Colors.transparent,
                         onPressed: () {
                           if(_nameController.text != "") {
-                            _setData('name', _nameController.text);
+                            setData('name', _nameController.text);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -247,11 +265,5 @@ class _IntroNameStepState extends State<IntroNameStep> {
       ),
     );
   }
-
-  void _setData(String key, String value) {
-    Fisio.sharedPreferences.setString(key, value);
-  }
-
-
 }
 

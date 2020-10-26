@@ -1,10 +1,11 @@
-class Exercise{
+class Exercise {
+  int difficulty;
+
   String name;
-  String descr;
+  String description;
   String tag;
   String url;
-  int diff;
 
-  Exercise(this.name,this.descr,this.tag,this.url,this.diff);
-
+  Exercise(this.name, this.description, this.tag,
+      this.url, this.difficulty);
 }

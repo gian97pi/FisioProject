@@ -1,12 +1,20 @@
+// Dart imports:
 import 'dart:io' show Platform;
 
-import 'package:fisioproject/main.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fisioproject/classes/user.dart';
-import 'package:fisioproject/values/colors.dart';
 import 'package:flutter/services.dart';
+
+// Package imports:
+import 'package:commons/commons.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+
+// Project imports:
+import 'package:fisioproject/classes/user.dart';
+import 'package:fisioproject/main.dart';
+import 'package:fisioproject/utils/shared_preferences.dart';
+import 'package:fisioproject/values/colors.dart';
 
 class Altro extends StatefulWidget {
   @override
@@ -14,84 +22,81 @@ class Altro extends StatefulWidget {
 }
 
 class _AltroState extends State<Altro> {
-  bool _enableNotifications = false;
+  bool _notificationsEnabled = false;
 
-  final _nameController = TextEditingController();
-  final _ageController = TextEditingController();
+  final _teNameController = TextEditingController();
+  final _teAgeController = TextEditingController();
 
-  DateTime _current = DateTime.now();
-  DateTime _selected;
+  DateTime _currentDt = DateTime.now();
   String _timeToDisplay = '';
 
   //TimePicker
-  //Nota: i minuti mi ritornano con una cifra, se minori di 10, quindi la aggiungo a mano per creare una data leggibile
   Future<void> _selectedTime(BuildContext context) async {
-    _selected = await DatePicker.showTimePicker(
+    await DatePicker.showTimePicker(
         context,
         showSecondsColumn: false,
-        currentTime: _current,
-        onConfirm: (date) {
-          String hour = date.hour.toString();
-          String minute;
-          if(date.minute < 10)
-            minute = '0' + date.minute.toString();
-          else
-            minute = date.minute.toString();
-          _setData('notificationTime', '$hour:$minute');
+        currentTime: _currentDt,
+        onConfirm: (dateTime) {
+          setState(() {
+            // HH:MM display format
+            _timeToDisplay = DateFormat.Hm().format(dateTime);
+            _currentDt = currentNotificationDt(_timeToDisplay);
+          });
+          setData('notificationTime', _timeToDisplay);
         });
-    setState(() {
-      if(_selected.minute < 10)
-        _timeToDisplay = _selected.hour.toString() + ':0' + _selected.minute.toString();
-      else
-      _timeToDisplay = _selected.hour.toString() + ':' + _selected.minute.toString();
-    });
-    _setData('notificationTime', _timeToDisplay);
   }
 
-  //Prendo i dati dalla SharedPreference e li setto nei campi corrispondenti
+  // Prendo i dati dalla SharedPreference e li setto nei campi corrispondenti
   @override
   void initState() {
     super.initState();
-    User user = _getData();
+    User user = User.get(Fisio.sharedPreferences);
+
     setState(() {
-      _nameController.text = user.name;
-      _ageController.text = user.age;
+      _teNameController.text = user.name;
+      _teAgeController.text = user.age;
       _timeToDisplay = user.notificationTime;
-      _enableNotifications = user.notifications;
+      _notificationsEnabled = user.notificationsEnabled;
+
+      /* Ensure that the time picker is opened at the current selected notification time,
+       * if already present in the shared preferences.
+       */
+      if (_timeToDisplay.isNotEmpty) {
+        _currentDt = currentNotificationDt(_timeToDisplay);
+      }
     });
   }
 
-  User _getData()  {
-    return User.get(Fisio.sharedPreferences);
+  DateTime currentNotificationDt(String displayTime) {
+    if (_currentDt == null || displayTime.isEmpty)
+      return null;
+
+    List<int> hourMin = displayTime.split(':')
+        .map(int.parse).toList();
+
+    return _currentDt.copyWith(hour: hourMin[0],
+        minute: hourMin[1]);
   }
 
-  void _setData(String key, String value) {
-    Fisio.sharedPreferences.setString(key, value);
-  }
-
-  void _setBool(String key, bool value)  {
-    Fisio.sharedPreferences.setBool(key, value);
-  }
-
-  Widget customSwitch() {
+  Widget NotificationSwitch() {
     if (Platform.isIOS) {
       return CupertinoSwitch(
-          value: _enableNotifications,
+          value: _notificationsEnabled,
           onChanged: (status) {
             setState(() {
-              _enableNotifications = status;
-              _setBool('notifications', status);
+              _notificationsEnabled = status;
+              setBool('notificationsEnabled', status);
             });
           }
       );
     } else {
       return Switch(
         activeColor: AppColors.primaryText,
-        value: _enableNotifications,
+        value: _notificationsEnabled,
         onChanged: (status) {
           setState(() {
-            _enableNotifications = status;
-            _setBool('notifications', status);
+            _notificationsEnabled = status;
+            setBool('notificationsEnabled', status);
           });
         },
       );
@@ -162,7 +167,7 @@ class _AltroState extends State<Altro> {
                                   fontWeight: FontWeight.normal
                               )
                           ),
-                          customSwitch()
+                          NotificationSwitch()
                         ],
                       ),
                     )
@@ -262,13 +267,13 @@ class _AltroState extends State<Altro> {
                           Container(
                             width: 150,
                             child: TextField(                               //Nome
-                              controller: _nameController,
+                              controller: _teNameController,
                               textAlign: TextAlign.right,
                               cursorWidth: 2.0,
                               cursorColor: AppColors.primaryText,
                               decoration: null,
                               onChanged: (String str) {
-                                _setData('name', str);
+                                setData('name', str);
                               },
                               style: TextStyle(
                                 color: AppColors.primaryText,
@@ -313,7 +318,7 @@ class _AltroState extends State<Altro> {
                           Container(                                          //Età
                             width: 100,
                             child: TextField(
-                                controller: _ageController,
+                                controller: _teAgeController,
                                 textAlign: TextAlign.right,
                                 cursorWidth: 2.0,
                                 cursorColor: AppColors.primaryText,
@@ -324,7 +329,7 @@ class _AltroState extends State<Altro> {
                                   LengthLimitingTextInputFormatter(3)
                                 ],
                                 onChanged: (String str) {
-                                  _setData('age', str);
+                                  setData('age', str);
                                 },
                                 style: TextStyle(
                                     color: AppColors.primaryText,
@@ -437,3 +442,5 @@ class _AltroState extends State<Altro> {
     );
   }
 }
+
+

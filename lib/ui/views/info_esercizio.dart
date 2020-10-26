@@ -1,5 +1,9 @@
-import 'package:fisioproject/values/colors.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:fisioproject/ui/elements/video_player.dart';
+import 'package:fisioproject/values/colors.dart';
 
 class InfoEsercizio extends StatelessWidget {
 
@@ -54,10 +58,11 @@ class InfoEsercizio extends StatelessWidget {
                             topRight: Radius.circular(30),
                             topLeft: Radius.circular(30)
                         ),
-                        child: Image(
-                          image: AssetImage("assets/images/french_curl.png"),
-                          fit: BoxFit.fill,
-                        ),
+                        child: VideoPlayer("https://www.youtube.com/watch?v=aRsWk4JZa5k")
+                        // child: Image(
+                        //   image: AssetImage("assets/images/french_curl.png"),
+                        //   fit: BoxFit.fill,
+                        // ),
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(16.0, 8.0, 0.0, 8.0),

@@ -1,11 +1,9 @@
-import 'exercise.dart';
+// Project imports:
+import 'session.dart';
 
-class Schedule{
-  String day;
-  List<Exercise> exercise;
+class Schedule {
+  List<Session> sessions;
 
-  Schedule(){
-    this.day = day;
-    this.exercise = exercise;
-  }
+  Schedule(
+      this.sessions);
 }

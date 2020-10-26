@@ -1,38 +1,41 @@
-import 'package:device_preview/device_preview.dart';
-
-import 'package:fisioproject/ui/views/giorno_aggiunta.dart';
-import 'package:fisioproject/ui/views/bottom_menu.dart';
-import 'package:fisioproject/ui/views/drawer.dart';
-
+// Flutter imports:
 import 'package:fisioproject/ui/views/intro_name_step.dart';
-import 'package:fisioproject/ui/views/riepilogo.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fisioproject/values/themes.dart';
+
+// Package imports:
+import 'package:device_preview/device_preview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+// Project imports:
 import 'package:fisioproject/classes/router.dart' as router;
+import 'package:fisioproject/values/themes.dart';
 
+// import 'package:fisioproject/ui/views/giorno_aggiunta.dart';
 
-import 'classes/user.dart';
-
-void main() => runApp(
-    DevicePreview(
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(DevicePreview(
       //!kReleaseMode
       enabled: false,
-      builder: (context) => Fisio(),
-    )
-);
+      builder: (context) => MaterialApp(
+        home: Fisio()
+      )
+  ));
+}
 
 class Fisio extends StatelessWidget {
   static SharedPreferences sharedPreferences;
+
   Future<SharedPreferences> _getData() async {
     return await SharedPreferences.getInstance();
   }
 
-  // This widget is the root of your application.
+  // This widget is Flutter's root.
   @override
   Widget build(BuildContext context) {
-    _getData().then((u) {
-      sharedPreferences = u;
+    _getData().then((storedPrefs) {
+      sharedPreferences = storedPrefs;
     });
 
     return MaterialApp(
@@ -46,8 +49,8 @@ class Fisio extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       title: 'Fisio',
       theme: AppThemes.fisio,
-      //home: BottomMenu(),
       home: IntroNameStep(),
+      // home: GiornoAggunta(),
 
     );
   }

@@ -1,10 +1,12 @@
-import 'package:fisioproject/classes/user.dart';
-import 'package:fisioproject/ui/elements/carusel_slider.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:fisioproject/values/colors.dart';
 
+// Project imports:
+import 'package:fisioproject/classes/user.dart';
+import 'package:fisioproject/ui/elements/carusel_slider.dart';
+import 'package:fisioproject/values/colors.dart';
 import '../../main.dart';
 
 class Riepilogo extends StatelessWidget {

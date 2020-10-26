@@ -1,7 +1,9 @@
-import 'package:fisioproject/ui/views/selezione_attrezzatura.dart';
-import 'package:fisioproject/ui/views/selezione_esercizio.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
+import 'package:fisioproject/ui/views/selezione_attrezzatura.dart';
+import 'package:fisioproject/ui/views/selezione_esercizio.dart';
 
 class RouteHandler {
 

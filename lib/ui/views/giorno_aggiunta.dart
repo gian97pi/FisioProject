@@ -1,13 +1,13 @@
-
-
-import 'package:fisioproject/classes/ProvaEx.dart';
-import 'package:fisioproject/ui/elements/recap_listview%5E2.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 
-class GiornoAggunta extends StatefulWidget{
-  final String argument;
+// Project imports:
+import 'package:fisioproject/classes/schedule.dart';
+import 'package:fisioproject/classes/session.dart';
+import 'package:fisioproject/ui/elements/recap_listview.dart';
 
-  const GiornoAggunta({Key key, @required this.argument}) : super(key: key);
+class GiornoAggunta extends StatefulWidget{
+  const GiornoAggunta({Key key}) : super(key: key);
 
   @override
   _GiornoAgguntaState createState() => _GiornoAgguntaState();
@@ -16,15 +16,20 @@ class GiornoAggunta extends StatefulWidget{
 class _GiornoAgguntaState extends State<GiornoAggunta> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    final List<ProvaEx> prova = [new ProvaEx('Lunedì',['curl','crunch','slam']),
-      new ProvaEx('Martedì', ['calf','dito','simone'])];
+    // TODO: Implement actual build function
+    final List<Session> sessions = [ // Dummy test values
+      new Session('Lunedì',
+          ['Curl', 'Crunch', 'Slam']),
+      new Session('Martedì',
+          ['Calf', 'DiTo', 'Simone'])
+    ];
+
+    final Schedule schedule = new Schedule(sessions);
 
     return Scaffold(
-        body:SafeArea(
+        body: SafeArea(
           child: SingleChildScrollView(
-            //child: Text(widget.argument.toString())
-            child: RecapListView(schedule : prova),
+            child: RecapListView(schedule: schedule),
           ),
         )
     );
