@@ -16,8 +16,17 @@ class User {
     this._notificationTime = sharedPreferences.getString('notificationTime') ?? '';
   }
 
-  /* Getters and setters */
+  static bool exists(SharedPreferences sharedPreferences) {
+    User user = User.get(sharedPreferences);
 
+    if (user.name.isNotEmpty && user.age.isNotEmpty) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /* Getters and setters */
   bool get notificationsEnabled => _notificationsEnabled;
 
   String get name => _name;

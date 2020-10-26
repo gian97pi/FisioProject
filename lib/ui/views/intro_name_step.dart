@@ -3,13 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // Project imports:
-import 'package:fisioproject/classes/user.dart';
 import 'package:fisioproject/ui/elements/custom_dialog.dart';
-import 'package:fisioproject/ui/views/bottom_menu.dart';
 import 'package:fisioproject/ui/views/intro_age_step.dart';
 import 'package:fisioproject/utils/shared_preferences.dart';
 import 'package:fisioproject/values/colors.dart';
-import '../../main.dart';
 
 // TODO: Add the "Cannot change" warning
 
@@ -20,19 +17,10 @@ class IntroNameStep extends StatefulWidget {
 
 class _IntroNameStepState extends State<IntroNameStep> {
   final _nameController = TextEditingController();
-  bool validInput = true;
 
   @override
   void initState() {
     super.initState();
-
-    // Redirect to homepage if user exists
-    User user = User.get(Fisio.sharedPreferences);
-/*
-    // FIXME: Navigator issue: '!_debugLocked' is not true.
-    if (user.name.isNotEmpty && user.age.isNotEmpty)
-      Navigator.of(context).push(MaterialPageRoute(builder:
-          (ctx) => BottomMenu())); */
   }
 
   @override
@@ -62,7 +50,7 @@ class _IntroNameStepState extends State<IntroNameStep> {
                                 fit: BoxFit.fill,
                               ),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0)),
+                              BorderRadius.all(Radius.circular(5.0)),
                             ),
                           ),
                         ),
@@ -81,7 +69,7 @@ class _IntroNameStepState extends State<IntroNameStep> {
                                   fit: BoxFit.fill,
                                 ),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(5.0)),
+                                BorderRadius.all(Radius.circular(5.0)),
                               ),
                             ),
                           ),
@@ -101,7 +89,7 @@ class _IntroNameStepState extends State<IntroNameStep> {
                                   fit: BoxFit.fill,
                                 ),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(5.0)),
+                                BorderRadius.all(Radius.circular(5.0)),
                               ),
                             ),
                           ),
@@ -111,7 +99,8 @@ class _IntroNameStepState extends State<IntroNameStep> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 24.0, top: 24.0, right: 24.0),
+                  padding: const EdgeInsets.only(
+                      left: 24.0, top: 24.0, right: 24.0),
                   child: Container(
                     decoration: BoxDecoration(
                       boxShadow: [
@@ -132,17 +121,18 @@ class _IntroNameStepState extends State<IntroNameStep> {
                       children: <Widget>[
                         Padding(
                           padding:
-                              const EdgeInsets.fromLTRB(24.0, 32.0, 28.0, 0.0),
+                          const EdgeInsets.fromLTRB(24.0, 32.0, 28.0, 0.0),
                           child: Container(
                             height: 89,
                             child: Image(
                               image:
-                                  AssetImage("assets/images/spine_white.png"),
+                              AssetImage("assets/images/spine_white.png"),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 32.0),
+                          padding: const EdgeInsets.fromLTRB(
+                              0.0, 16.0, 0.0, 32.0),
                           child: Text(
                             "Ciao, come ti\nchiami?",
                             textAlign: TextAlign.center,
@@ -160,7 +150,7 @@ class _IntroNameStepState extends State<IntroNameStep> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.only(left: 24.0, top: 48.0, right: 24.0),
+                  const EdgeInsets.only(left: 24.0, top: 48.0, right: 24.0),
                   child: Container(
                     height: 44,
                     decoration: BoxDecoration(
@@ -170,7 +160,7 @@ class _IntroNameStepState extends State<IntroNameStep> {
                             blurRadius: 5.0,
                             spreadRadius: 0.5,
                             offset:
-                                Offset(0.0, 3.0), // shadow direction: bottom
+                            Offset(0.0, 3.0), // shadow direction: bottom
                           )
                         ],
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -181,7 +171,8 @@ class _IntroNameStepState extends State<IntroNameStep> {
                       children: <Widget>[
                         TextField(
                           //Nome
-                            textCapitalization: TextCapitalization.sentences, //prima lettera maiuscola
+                            textCapitalization: TextCapitalization.sentences,
+                            //prima lettera maiuscola
                             controller: _nameController,
                             textAlign: TextAlign.center,
                             cursorWidth: 2.0,
@@ -225,7 +216,7 @@ class _IntroNameStepState extends State<IntroNameStep> {
                         highlightColor: Colors.transparent,
                         splashColor: Colors.transparent,
                         onPressed: () {
-                          if(_nameController.text != "") {
+                          if (_nameController.text != "") {
                             setData('name', _nameController.text);
                             Navigator.push(
                                 context,
@@ -234,15 +225,16 @@ class _IntroNameStepState extends State<IntroNameStep> {
                                 )
                             );
                           }
-                          else{
+                          else {
                             showDialog(
                               context: context,
-                              builder: (BuildContext context) => CustomDialog(
-                                title: "Attenzione",
-                                description:
-                                "Devi inserire un nome valido per continuare!",
-                                buttonText: "Riprova",
-                              ),
+                              builder: (BuildContext context) =>
+                                  CustomDialog(
+                                    title: "Attenzione",
+                                    description:
+                                    "Devi inserire un nome valido per continuare!",
+                                    buttonText: "Riprova",
+                                  ),
                             );
                           }
                         },
