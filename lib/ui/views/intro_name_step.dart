@@ -28,11 +28,11 @@ class _IntroNameStepState extends State<IntroNameStep> {
 
     // Redirect to homepage if user exists
     User user = User.get(Fisio.sharedPreferences);
-
+/*
     // FIXME: Navigator issue: '!_debugLocked' is not true.
     if (user.name.isNotEmpty && user.age.isNotEmpty)
       Navigator.of(context).push(MaterialPageRoute(builder:
-          (ctx) => BottomMenu()));
+          (ctx) => BottomMenu())); */
   }
 
   @override
