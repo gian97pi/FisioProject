@@ -34,6 +34,10 @@ dependencies:
   carousel_slider: ^2.3.1
   provider: ^4.3.2+2
   youtube_player_flutter: ^7.0.0+7
+  flutter_local_notifications: ^2.0.1
+  rxdart: ^0.24.1
+  path_provider: ^1.6.21
+  http: ^0.12.2
 
 dev_dependencies:
   flutter_test:

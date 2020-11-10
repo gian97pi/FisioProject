@@ -2,6 +2,9 @@
 import 'dart:io' show Platform;
 
 // Flutter imports:
+import 'file:///C:/Users/Gianluca%20Picci/StudioProjects/FisioProject/lib/classes/NotificationPlugin.dart';
+import 'package:fisioproject/ui/views/bottom_menu.dart';
+import 'package:fisioproject/ui/views/riepilogo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,7 +39,8 @@ class _AltroState extends State<Altro> {
         context,
         showSecondsColumn: false,
         currentTime: _currentDt,
-        onConfirm: (dateTime) {
+        onConfirm: (dateTime) async {
+          await notificationPlugin.showDailyAtTime(dateTime.hour, dateTime.minute);
           setState(() {
             // HH:MM display format
             _timeToDisplay = DateFormat.Hm().format(dateTime);
@@ -51,6 +55,10 @@ class _AltroState extends State<Altro> {
   void initState() {
     super.initState();
     User user = User.get(Fisio.sharedPreferences);
+
+    notificationPlugin
+        .setListenerForLowerVersions(onNotificationInLowerVersions);
+    notificationPlugin.setOnNotificationClick(onNotificationClick);
 
     setState(() {
       _teNameController.text = user.name;
@@ -440,6 +448,17 @@ class _AltroState extends State<Altro> {
         ),
       )
     );
+  }
+
+  onNotificationInLowerVersions(ReceivedNotification receivedNotification) {
+    print('Notification Received ${receivedNotification.id}');
+  }
+
+  onNotificationClick(String payload) {
+    print('Payload $payload');
+    Navigator.push(context, MaterialPageRoute(builder: (coontext) {
+      return BottomMenu();
+    }));
   }
 }
 
